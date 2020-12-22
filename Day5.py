@@ -39,14 +39,30 @@ def boardingPass(data):
     rows = np.arange(0,128)
     col = np.arange(0,8)
     highID = 0
+    all_ID = []
     for i in range(0, n):
         passInfo = data[i][0]
         colInfo = passInfo[7:]
         rowNumber = rowcalc(passInfo, rows)
         colNumber = colcalc(colInfo, col)
         ID = rowNumber[0]*8 + colNumber[0]
+        all_ID.append(ID)
         if ID > highID:
             highID = ID
-    return highID
+    return highID, all_ID
 
 answer = boardingPass(data())
+print(answer[0])
+
+""" PART 2 """
+def yourID(IDs):
+    IDs = np.sort(IDs)
+    n = len(IDs)
+    seatID = 0
+    for i in range(0, n-1):
+        if IDs[i]+1 != IDs[i+1]:
+            seatID = IDs[i]+1
+    return seatID
+
+answer2 = yourID(answer[1])
+print(answer2)
