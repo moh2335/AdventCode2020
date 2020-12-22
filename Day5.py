@@ -50,4 +50,3 @@ def boardingPass(data):
     return highID
 
 answer = boardingPass(data())
-print(answer)
