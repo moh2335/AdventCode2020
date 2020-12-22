@@ -23,7 +23,7 @@ answer1 = part1(data())
 print(answer1)
 
 """ PART 2 """
-
+# Part 2 solution I came up with
 def part2(data):
     n = len(data)
     count = []
@@ -51,3 +51,20 @@ def part2(data):
 
 answer2 = part2(data())
 print(answer2)
+
+# Part 2 solution after finding out about '&=' and 'set()'
+def part22(data):
+    n = len(data)
+    count = []
+    for i in range(0, n):
+        person = re.split('\n', data[i])
+        answer = set(person[0])
+        n_persons = len(person)
+        for i in range(0, n_persons):
+            answer &= set(person[i])
+        count.append(len(answer))
+    return sum(count)
+
+answer22 = part22(data())
+print(answer22)
+
