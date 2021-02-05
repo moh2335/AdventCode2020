@@ -34,12 +34,20 @@ print("The number you're looking for is {}.".format(N))
 
 """ PART 2 """
 
-def main2(N, input):
+def short(N, input):
     index  = np.where(input == N)
     data = input[:index[0][0]]
-    for i in range(len(data)):
-        for j in itertools.combinations(data, i):
-            print(j)
+    return data
 
-test = main2(N, data())
+short_data = short(N, data())
 
+def subset_sum(target, numbers, partial=[]):
+    if partial_sum == target:
+        yield partial
+    if partial_sum >= target:
+        return
+    for i, n in enumerate(numbers):
+        remaining = numbers[i + 1:]
+        yield from subset_sum(remaining, target, partial + [n], partial_sum + n)
+
+subset_sum(N, short_data)
